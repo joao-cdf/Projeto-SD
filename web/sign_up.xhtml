@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Sign Up</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>        
+        <div>
+            Mobiliario Clinico: 
+            <h:link outcome="index" value="Home" />
+        </div>       
+        <h:form>
+            <h1>Sign Up</h1>
+            <h:outputLabel value="Enter username"></h:outputLabel>
+            <br></br>
+            <h:inputText id="name"
+                         title="Enter username"
+                         value="#{Register.nome}"
+                         required="true"
+                         requiredMessage="Error: A username is required."
+                         maxlength="50"
+                         />
+            <p/>
+            <h:outputLabel value="Enter email"></h:outputLabel>
+            <br></br>
+            <h:inputText id="email"
+                         title="Enter email"
+                         value="#{Register.email}"
+                         required="true"
+                         requiredMessage="Error: An email is required."
+                         maxlength="50"
+                         />
+            <p/>
+            <h:outputLabel value="Enter password"></h:outputLabel>    
+            <br></br>
+            <h:inputText id="password"
+                         title="Enter password"                         
+                         value="#{Register.password}"
+                         required="true"
+                         requiredMessage="Error: A password is required."
+                         maxlength="50"
+                         />
+            <p/>
+            <br></br>            
+            <h:commandButton value="Sign Up"
+                             action="#{Register.addUtilizador()}"
+            />
+        </h:form>
+        
+        <p>Already Registered? <h:link value="Click to Sign In!" outcome="sign_in.xhtml" /></p>       
+        <br />
+    </h:body>
+</html>
