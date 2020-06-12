@@ -25,7 +25,7 @@
             <p/>
             <h:outputLabel value="Enter password"></h:outputLabel>    
             <br></br>
-            <h:inputText id="password"
+            <h:inputSecret id="password"
                          title="Enter password"                         
                          value="#{Logging.password}"
                          required="true"
@@ -35,7 +35,7 @@
             <p/>
             <br></br>            
             <h:commandButton value="Sign In"
-                             action="#{Logging.sign_in()}"
+                             action="#{Logging.sign_in}"
             />
         </h:form>
         <p>Not yet Registered? <h:link value="Click to Sign Up!" outcome="sign_up.xhtml" /></p>       

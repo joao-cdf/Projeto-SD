@@ -8,6 +8,21 @@
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
+        Mobiliario Clinico: 
+        <h:link outcome="index" value="Home" />
+        |
+        <h:panelGroup rendered="#{Logging.logged == true}">                
+            #{Logging.nome}
+            |
+            <h:form>
+            <h:commandButton value="Log out" action="#{Logging.sign_out()}"/>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{Logging.logged == false}">
+            <h:link outcome="sign_in" value="Sign In" />
+            |
+            <h:link outcome="sign_up" value="Sign Up" />                
+        </h:panelGroup>
         <h:dataTable value="#{mobiliController.productList}" var="produto"  border="1">
             <h:column>
                 <f:facet name="header">

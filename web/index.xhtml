@@ -10,15 +10,24 @@
     <h:body>        
         <div>
             Mobiliario Clinico: 
-            <h:link outcome="sign_in" value="Sign In" />
+            <h:link outcome="index" value="Home" />
             |
-            <h:link outcome="sign_up" value="Sign Up" />
+            <h:panelGroup rendered="#{Logging.logged == true}">                
+                #{Logging.nome}
+                |
+                <h:form>
+                    <h:commandButton value="Log out" action="#{Logging.sign_out()}"/>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{Logging.logged == false}">
+                <h:link outcome="sign_in" value="Sign In" />
+                |
+                <h:link outcome="sign_up" value="Sign Up" />                
+            </h:panelGroup>
         </div>       
         <br/>
         <br></br>
         <h:link outcome="listar_todos_mobiclin" value="List all resources." />
     </h:body>
-
-
 </html>
 
