@@ -42,7 +42,7 @@ public class Register implements Serializable   {
     }
    
     @EJB
-    UtilizadorBean user;
+    private UtilizadorBean user;
     List<Utilizador> userList = new ArrayList<>();
     public List<Utilizador> getUserList()   {
         userList = user.getUtilizadores();
