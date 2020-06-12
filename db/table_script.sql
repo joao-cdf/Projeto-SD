@@ -2,7 +2,7 @@ create table "APP".UTILIZADOR
 (
 	ID_UTILIZADOR INTEGER not null primary key generated always as identity (start with 1, increment by 1),
 	NOME VARCHAR(50) not null,
-	EMAIL VARCHAR(50) not null,
+	EMAIL VARCHAR(50) not null unique,
 	PASSWORD VARCHAR(50) not null
 );
 
