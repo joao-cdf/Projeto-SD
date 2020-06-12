@@ -17,13 +17,8 @@ public class UtilizadorBean {
     }
     
     public Utilizador addUtilizador(Utilizador x)   {
-        try {
         em.persist(x);
-        }catch(Exception e) {
-            
-        }
         return x;
     }
-    
 }
 
