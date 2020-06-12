@@ -1,7 +1,9 @@
 package dev.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -23,6 +27,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Utilizador.findByEmail", query = "SELECT u FROM Utilizador u WHERE u.email = :email")
     , @NamedQuery(name = "Utilizador.findByPassword", query = "SELECT u FROM Utilizador u WHERE u.password = :password")})
 public class Utilizador implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Requisicao> requisicaoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUtilizador")
+    private Collection<Reserva> reservaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -113,6 +122,24 @@ public class Utilizador implements Serializable {
     @Override
     public String toString() {
         return "dev.entities.Utilizador[ idUtilizador=" + idUtilizador + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Requisicao> getRequisicaoCollection() {
+        return requisicaoCollection;
+    }
+
+    public void setRequisicaoCollection(Collection<Requisicao> requisicaoCollection) {
+        this.requisicaoCollection = requisicaoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Reserva> getReservaCollection() {
+        return reservaCollection;
+    }
+
+    public void setReservaCollection(Collection<Reserva> reservaCollection) {
+        this.reservaCollection = reservaCollection;
     }
     
 }

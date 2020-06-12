@@ -34,12 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Mobiliarioclinico.findByQuantidadeDisponivel", query = "SELECT m FROM Mobiliarioclinico m WHERE m.quantidadeDisponivel = :quantidadeDisponivel")})
 public class Mobiliarioclinico implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID_PRODUTO")
-    private Integer idProduto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -56,6 +50,13 @@ public class Mobiliarioclinico implements Serializable {
     @NotNull
     @Column(name = "QUANTIDADE_DISPONIVEL")
     private int quantidadeDisponivel;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PRODUTO")
+    private Integer idProduto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduto")
     private Collection<Requisicao> requisicaoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduto")
@@ -83,21 +84,6 @@ public class Mobiliarioclinico implements Serializable {
         this.idProduto = idProduto;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
     public int getQuantidadeTotal() {
         return quantidadeTotal;
@@ -158,6 +144,19 @@ public class Mobiliarioclinico implements Serializable {
         return "Mobiliarioclinico{" + "idProduto=" + idProduto + ", nome=" + nome + ", descricao=" + descricao + ", quantidadeTotal=" + quantidadeTotal + ", quantidadeDisponivel=" + quantidadeDisponivel + ", requisicaoCollection=" + requisicaoCollection + ", reservaCollection=" + reservaCollection + '}';
     }
 
-    
-    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
