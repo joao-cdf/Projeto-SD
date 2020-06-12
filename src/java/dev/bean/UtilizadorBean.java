@@ -1,6 +1,6 @@
 package dev.bean;
 
-import dev.entities.*;
+import dev.entities.Utilizador;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
