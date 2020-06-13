@@ -18,6 +18,7 @@ public class MobiliController implements Serializable{
     private String descricao;
     private int qtd_total;
     private int qtd_disp;
+    private int selected_id;
 
     public int getId() {
         return id;
@@ -79,8 +80,12 @@ public class MobiliController implements Serializable{
         return "listar_todos_mobiclin.xhtml";
     }
     
+    public void set_selected_id()   {
+        
+    }
+    
     public Mobiliarioclinico getProduct()   {
-        return mobiliBean.getProduct(id);
+        return mobiliBean.getProduct(selected_id);
     }
     
 }
