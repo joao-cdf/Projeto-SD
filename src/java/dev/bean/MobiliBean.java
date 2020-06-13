@@ -25,4 +25,8 @@ public class MobiliBean {
         return x;
     }
     
+    public Mobiliarioclinico getProduct(int id)   {
+        return (Mobiliarioclinico)em.createNamedQuery("Mobiliarioclinico.findByIdProduto").setParameter("id", id).getSingleResult();
+    }
+    
 }
