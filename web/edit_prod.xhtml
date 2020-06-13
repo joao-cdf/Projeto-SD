@@ -26,8 +26,18 @@
             </h:panelGroup>
         </div>       
         <br/>
-        <br></br>
-        <h:link outcome="listar_todos_mobiclin" value="List all resources." />
+        <h:form>
+            <h1>Editar Recurso</h1>
+            <h:outputLabel value="Enter email"></h:outputLabel>    
+            <br></br>            
+            <h:inputText id="Nome"
+                         title="Nome"
+                         value="#{Logging.email}"
+                         required="true"
+                         requiredMessage="Error: An email is required."
+                         maxlength="50"
+                         />
+            <p/>            
+        </h:form>
     </h:body>
 </html>
-

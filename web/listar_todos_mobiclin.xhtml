@@ -8,21 +8,24 @@
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Mobiliario Clinico: 
-        <h:link outcome="index" value="Home" />
-        |
-        <h:panelGroup rendered="#{Logging.logged == true}">                
-            #{Logging.nome}
+        <div>
+            <h:outputText value="Mobiliario Clinico: "/>
+            <h:link outcome="index" value="Home" />
             |
-            <h:form>
-            <h:commandButton value="Log out" action="#{Logging.sign_out()}"/>
-            </h:form>
-        </h:panelGroup>
-        <h:panelGroup rendered="#{Logging.logged == false}">
-            <h:link outcome="sign_in" value="Sign In" />
-            |
-            <h:link outcome="sign_up" value="Sign Up" />                
-        </h:panelGroup>
+            <h:panelGroup rendered="#{Logging.logged == true}">                
+                <h:outputText value="#{Logging.nome}"/>
+                |
+                <h:form>
+                <h:commandButton value="Sign out" action="#{Logging.sign_out()}"/>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{Logging.logged == false}">
+                <h:link outcome="sign_in" value="Sign In" />
+                |
+                <h:link outcome="sign_up" value="Sign Up" />                
+            </h:panelGroup>
+        </div>
+        <br/>
         <h:dataTable value="#{mobiliController.productList}" var="produto"  border="1">
             <h:column>
                 <f:facet name="header">
@@ -54,9 +57,20 @@
                 </f:facet>
                 <h:outputText value="#{produto.quantidadeDisponivel}"/>
             </h:column>
+            <h:column rendered="#{Logging.logged == true}">
+                <f:facet name="header">
+                    <h:outputText value="Ações"/>
+                </f:facet>
+                <h:form>
+                    <h:commandButton value="Editar" action="edit_prod.xhtml"/>
+                    <h:commandButton value="Remover" action="#{MobiliController.remove}"/>
+                    <h:commandButton value="Requisitar" action="#{Request.add}"/>
+                </h:form>
+            </h:column>
         </h:dataTable>
+        <br/>
         <h:form>   
-            <h:commandButton id="back" value="Back" action="index" />
+            <h:commandButton id="back" value="Back" action="index.xhtml" />
         </h:form>
     </h:body>
 </html>
